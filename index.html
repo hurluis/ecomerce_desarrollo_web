@@ -3,423 +3,112 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Luna Beauty — Ecommerce de Belleza</title>
-  <meta name="description" content="Catálogo ecommerce de belleza (proyecto académico) con filtros y carrito simulado." />
+  <title>Tienda Aura — Cuidado Personal</title>
+  <meta name="description" content="Página simple de ecommerce académico con productos, imágenes y diseño limpio." />
   <link rel="stylesheet" href="styles.css" />
 </head>
-
-<body id="inicio">
-  <!-- HEADER (semántico) -->
-  <header class="site-header">
-    <div class="container header-wrap">
-      <a class="brand" href="#inicio" aria-label="Ir al inicio">
-        <span class="brand__logo">LB</span>
-        <span class="brand__name">Luna Beauty</span>
-      </a>
-
-      <nav class="nav" aria-label="Navegación principal">
+<body>
+  <header class="site-header" id="inicio">
+    <div class="container">
+      <p class="brand">✨ Tienda Aura</p>
+      <nav aria-label="Navegación principal" class="menu">
         <a href="#productos">Productos</a>
-        <a href="#ofertas">Ofertas</a>
-        <a href="#resenas">Reseñas</a>
+        <a href="#info">Información</a>
         <a href="#contacto">Contacto</a>
       </nav>
-
-      <button class="btn btn--ghost cart-btn" type="button" id="openCart">
-        🛒 Carrito <span class="cart-count" id="cartCount">0</span>
-      </button>
     </div>
   </header>
 
-  <!-- MAIN (semántico) -->
-  <main>
-    <!-- SECTION 1: HERO -->
+  <main class="container">
     <section class="hero">
-      <div class="container hero-grid">
-        <div class="hero-copy">
-          <h1>Belleza simple, rutina inteligente.</h1>
+      <h1>Productos bonitos, página simple.</h1>
+      <p>
+        Este catálogo fue simplificado al máximo: solo lo esencial, diseño ordenado, y tarjetas de producto con imagen.
+      </p>
+      <a class="btn" href="#productos">Ver productos</a>
+    </section>
 
-        <div class="hero-media">
-          <!-- Pon tu imagen en assets/img/hero.jpg -->
-          <img src="assets/img/hero.jpg" alt="Productos de belleza organizados" loading="lazy" />
-        </div>
+    <section id="productos" class="section">
+      <h2>Productos destacados</h2>
+      <p>Seleccionamos 3 opciones con imagen y precio para un catálogo claro y legible.</p>
+
+      <div class="products">
+        <article class="card">
+          <img
+            src="https://images.unsplash.com/photo-1611080541599-8c6dbde6ed28?auto=format&fit=crop&w=900&q=80"
+            alt="Sérum facial en frasco de vidrio"
+            loading="lazy"
+          />
+          <h3>Sérum Hidratante</h3>
+          <p>Textura ligera para uso diario.</p>
+          <ul>
+            <li>Ácido hialurónico</li>
+            <li>Absorción rápida</li>
+            <li>Todo tipo de piel</li>
+          </ul>
+          <p class="price">$49.900</p>
+        </article>
+
+        <article class="card">
+          <img
+            src="https://images.unsplash.com/photo-1612817288484-6f916006741a?auto=format&fit=crop&w=900&q=80"
+            alt="Protector solar en tubo sobre fondo claro"
+            loading="lazy"
+          />
+          <h3>Protector Solar SPF 50</h3>
+          <p>Protección diaria con acabado natural.</p>
+          <ul>
+            <li>UVA/UVB</li>
+            <li>No graso</li>
+            <li>Uso de día</li>
+          </ul>
+          <p class="price">$56.900</p>
+        </article>
+
+        <article class="card">
+          <img
+            src="https://images.unsplash.com/photo-1598662957563-ee4965d4d72c?auto=format&fit=crop&w=900&q=80"
+            alt="Labial rojo junto a brocha de maquillaje"
+            loading="lazy"
+          />
+          <h3>Labial Mate</h3>
+          <p>Color intenso para looks de día o noche.</p>
+          <ul>
+            <li>Alta pigmentación</li>
+            <li>Acabado mate</li>
+            <li>Larga duración</li>
+          </ul>
+          <p class="price">$34.900</p>
+        </article>
       </div>
     </section>
 
-    <!-- SECTION 2: PRODUCTOS -->
-    <section class="section" id="productos">
-      <div class="container">
-        <header class="section-head">
-          <h2>Productos destacados</h2>
-          <p>Busca por nombre o filtra por categoría y agrega al carrito.</p>
-        </header>
-
-        <!-- Controles (IDs necesarios para filters.js) -->
-        <div class="controls">
-          <label class="input">
-            <span>Buscar</span>
-            <input id="searchInput" type="search" placeholder="Ej: sérum, shampoo, protector..." />
-          </label>
-
-          <label class="input">
-            <span>Categoría</span>
-            <select id="categorySelect">
-              <option value="all">Todas</option>
-              <option value="skincare">Skincare</option>
-              <option value="makeup">Maquillaje</option>
-              <option value="hair">Cabello</option>
-              <option value="fragrance">Fragancia</option>
-            </select>
-          </label>
-        </div>
-
-        <!-- Grid de productos (clase .product y data-* necesarios para JS) -->
-        <div class="grid" id="productsGrid">
-          <!-- 1 -->
-          <article class="card product"
-            data-id="p1" data-name="Sérum Vitamina C" data-price="59000" data-category="skincare">
-            <img src="assets/img/product-1.jpg" alt="Sérum de Vitamina C" loading="lazy" />
-            <div class="card-body">
-              <h3>Sérum Vitamina C</h3>
-              <p>Ilumina y ayuda a unificar el tono con textura ligera.</p>
-              <ul class="list">
-                <li>Vitamina C estabilizada</li>
-                <li>Ácido hialurónico</li>
-                <li>Acabado no graso</li>
-              </ul>
-              <div class="card-foot">
-                <span class="price">$59.000</span>
-                <button class="btn btn--small add-to-cart" type="button">Agregar</button>
-              </div>
-            </div>
-          </article>
-
-          <!-- 2 -->
-          <article class="card product"
-            data-id="p2" data-name="Protector Solar SPF 50" data-price="72000" data-category="skincare">
-            <img src="assets/img/product-2.jpg" alt="Protector solar SPF 50" loading="lazy" />
-            <div class="card-body">
-              <h3>Protector Solar SPF 50</h3>
-              <p>Protección diaria de amplio espectro con acabado natural.</p>
-              <ul class="list">
-                <li>UVA/UVB</li>
-                <li>No deja rastro blanco</li>
-                <li>Uso diario</li>
-              </ul>
-              <div class="card-foot">
-                <span class="price">$72.000</span>
-                <button class="btn btn--small add-to-cart" type="button">Agregar</button>
-              </div>
-            </div>
-          </article>
-
-          <!-- 3 -->
-          <article class="card product"
-            data-id="p3" data-name="Gel Limpiador Suave" data-price="45000" data-category="skincare">
-            <img src="assets/img/product-3.jpg" alt="Gel limpiador facial" loading="lazy" />
-            <div class="card-body">
-              <h3>Gel Limpiador Suave</h3>
-              <p>Limpieza sin resecar. Ideal mañana y noche.</p>
-              <ul class="list">
-                <li>pH balanceado</li>
-                <li>Espuma suave</li>
-                <li>Para piel mixta</li>
-              </ul>
-              <div class="card-foot">
-                <span class="price">$45.000</span>
-                <button class="btn btn--small add-to-cart" type="button">Agregar</button>
-              </div>
-            </div>
-          </article>
-
-          <!-- 4 -->
-          <article class="card product"
-            data-id="p4" data-name="Labial Mate Velvet" data-price="39000" data-category="makeup">
-            <img src="assets/img/product-4.jpg" alt="Labial mate" loading="lazy" />
-            <div class="card-body">
-              <h3>Labial Mate Velvet</h3>
-              <p>Color intenso con sensación suave y buen agarre.</p>
-              <ul class="list">
-                <li>Alta pigmentación</li>
-                <li>Acabado velvet</li>
-                <li>Larga duración</li>
-              </ul>
-              <div class="card-foot">
-                <span class="price">$39.000</span>
-                <button class="btn btn--small add-to-cart" type="button">Agregar</button>
-              </div>
-            </div>
-          </article>
-
-          <!-- 5 -->
-          <article class="card product"
-            data-id="p5" data-name="Máscara de Pestañas" data-price="42000" data-category="makeup">
-            <img src="assets/img/product-5.jpg" alt="Máscara de pestañas" loading="lazy" />
-            <div class="card-body">
-              <h3>Máscara de Pestañas</h3>
-              <p>Volumen y definición sin grumos, fácil de retirar.</p>
-              <ul class="list">
-                <li>Define y separa</li>
-                <li>No se corre fácil</li>
-                <li>Fácil limpieza</li>
-              </ul>
-              <div class="card-foot">
-                <span class="price">$42.000</span>
-                <button class="btn btn--small add-to-cart" type="button">Agregar</button>
-              </div>
-            </div>
-          </article>
-
-          <!-- 6 -->
-          <article class="card product"
-            data-id="p6" data-name="Shampoo Reparador" data-price="54000" data-category="hair">
-            <img src="assets/img/product-6.jpg" alt="Shampoo reparador" loading="lazy" />
-            <div class="card-body">
-              <h3>Shampoo Reparador</h3>
-              <p>Reduce frizz y mejora brillo sin sulfatos agresivos.</p>
-              <ul class="list">
-                <li>Suave con el cuero cabelludo</li>
-                <li>Mejora brillo</li>
-                <li>Uso frecuente</li>
-              </ul>
-              <div class="card-foot">
-                <span class="price">$54.000</span>
-                <button class="btn btn--small add-to-cart" type="button">Agregar</button>
-              </div>
-            </div>
-          </article>
-
-          <!-- 7 -->
-          <article class="card product"
-            data-id="p7" data-name="Acondicionador Hidratante" data-price="52000" data-category="hair">
-            <img src="assets/img/product-7.jpg" alt="Acondicionador hidratante" loading="lazy" />
-            <div class="card-body">
-              <h3>Acondicionador Hidratante</h3>
-              <p>Suaviza y desenreda sin dejar el cabello pesado.</p>
-              <ul class="list">
-                <li>Desenreda rápido</li>
-                <li>Hidratación ligera</li>
-                <li>Mejora elasticidad</li>
-              </ul>
-              <div class="card-foot">
-                <span class="price">$52.000</span>
-                <button class="btn btn--small add-to-cart" type="button">Agregar</button>
-              </div>
-            </div>
-          </article>
-
-          <!-- 8 -->
-          <article class="card product"
-            data-id="p8" data-name="Perfume Floral 50ml" data-price="99000" data-category="fragrance">
-            <img src="assets/img/product-8.jpg" alt="Perfume floral 50ml" loading="lazy" />
-            <div class="card-body">
-              <h3>Perfume Floral (50ml)</h3>
-              <p>Notas frescas y florales para uso diario.</p>
-              <ul class="list">
-                <li>Salida cítrica</li>
-                <li>Corazón floral</li>
-                <li>Fondo amaderado</li>
-              </ul>
-              <div class="card-foot">
-                <span class="price">$99.000</span>
-                <button class="btn btn--small add-to-cart" type="button">Agregar</button>
-              </div>
-            </div>
-          </article>
-        </div>
-      </div>
+    <section id="info" class="section info">
+      <h2>Información de compra</h2>
+      <p>Guía rápida para mantener la página funcional y fácil de entender.</p>
+      <ol>
+        <li>Elige un producto.</li>
+        <li>Revisa sus beneficios.</li>
+        <li>Escríbenos para confirmar disponibilidad.</li>
+      </ol>
+      <p>
+        También puedes volver al <a href="#inicio">inicio</a> o saltar a <a href="#contacto">contacto</a>.
+      </p>
     </section>
 
-    <!-- SECTION 3: OFERTAS -->
-    <section class="section section--alt" id="ofertas">
-      <div class="container">
-        <header class="section-head">
-          <h2>Ofertas y combos</h2>
-          <p>Guías rápidas para armar rutina (lista ordenada).</p>
-        </header>
-
-        <div class="offers">
-          <article class="card">
-            <div class="card-body">
-              <h3>Combo “Piel luminosa”</h3>
-              <p>Rutina básica para empezar bien.</p>
-              <ol class="list">
-                <li>Gel limpiador</li>
-                <li>Sérum Vitamina C</li>
-                <li>Protector Solar SPF 50</li>
-              </ol>
-              <p class="small"><a href="#productos">Ver productos</a></p>
-            </div>
-          </article>
-
-          <article class="card">
-            <div class="card-body">
-              <h3>Combo “Cabello suave”</h3>
-              <p>Para bajar frizz y dar brillo.</p>
-              <ol class="list">
-                <li>Shampoo reparador</li>
-                <li>Acondicionador hidratante</li>
-                <li>Mascarilla (sugerida)</li>
-              </ol>
-              <p class="small"><a href="#contacto">Consultar disponibilidad</a></p>
-            </div>
-          </article>
-
-          <article class="card">
-            <div class="card-body">
-              <h3>Combo “Makeup express”</h3>
-              <p>Maquillaje rápido para diario.</p>
-              <ol class="list">
-                <li>Máscara de pestañas</li>
-                <li>Labial mate</li>
-                <li>Hidratante (sugerido)</li>
-              </ol>
-              <p class="small"><a href="#productos">Ir a maquillaje</a></p>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- SECTION 4: RESEÑAS -->
-    <section class="section" id="resenas">
-      <div class="container">
-        <header class="section-head">
-          <h2>Reseñas</h2>
-          <p>Opiniones demo para completar el sitio.</p>
-        </header>
-
-        <div class="grid">
-          <article class="card">
-            <div class="card-body">
-              <h3>Camila</h3>
-              <p>“El protector solar se siente ligero y no deja rastro blanco.”</p>
-              <p class="small">⭐️⭐️⭐️⭐️⭐️</p>
-            </div>
-          </article>
-
-          <article class="card">
-            <div class="card-body">
-              <h3>Andrés</h3>
-              <p>“El shampoo bajó el frizz y el olor es suave.”</p>
-              <p class="small">⭐️⭐️⭐️⭐️</p>
-            </div>
-          </article>
-
-          <article class="card">
-            <div class="card-body">
-              <h3>Valentina</h3>
-              <p>“El labial dura bastante y el acabado se ve elegante.”</p>
-              <p class="small">⭐️⭐️⭐️⭐️⭐️</p>
-            </div>
-          </article>
-
-          <article class="card">
-            <div class="card-body">
-              <h3>Juan</h3>
-              <p>“El sérum se absorbe rápido, perfecto para la mañana.”</p>
-              <p class="small">⭐️⭐️⭐️⭐️⭐️</p>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- SECTION 5: CONTACTO -->
-    <section class="section section--alt" id="contacto">
-      <div class="container">
-        <header class="section-head">
-          <h2>Contacto</h2>
-          <p>Formulario demo (no envía a servidor).</p>
-        </header>
-
-        <div class="contact-grid">
-          <form class="card" id="contactForm">
-            <div class="card-body">
-              <label class="input">
-                <span>Nombre</span>
-                <input type="text" name="name" placeholder="Tu nombre" required />
-              </label>
-
-              <label class="input">
-                <span>Correo</span>
-                <input type="email" name="email" placeholder="tucorreo@email.com" required />
-              </label>
-
-              <label class="input">
-                <span>Mensaje</span>
-                <textarea name="message" rows="4" placeholder="¿Qué producto buscas?" required></textarea>
-              </label>
-
-              <button class="btn" type="submit">Enviar</button>
-              <p class="small" id="formMsg" aria-live="polite"></p>
-
-              <p class="small">
-                Enlaces:
-                <a href="#inicio">Inicio</a> ·
-                <a href="#productos">Productos</a>
-              </p>
-            </div>
-          </form>
-
-          <aside class="card">
-            <div class="card-body">
-              <h3>Información</h3>
-              <p><strong>Horario:</strong> Lun–Sáb 9:00 a 18:00</p>
-              <p><strong>WhatsApp:</strong> <a href="#">+57 300 000 0000</a></p>
-              <p><strong>Correo:</strong> <a href="#">hola@lunabeauty.com</a></p>
-
-              <h3>Redes</h3>
-              <ul class="list">
-                <li><a href="#">Instagram</a></li>
-                <li><a href="#">TikTok</a></li>
-                <li><a href="#">Facebook</a></li>
-              </ul>
-
-              <p class="small">Proyecto académico: no procesa pagos reales.</p>
-            </div>
-          </aside>
-        </div>
-      </div>
+    <section id="contacto" class="section">
+      <h2>Contacto</h2>
+      <p>¿Necesitas ayuda? Estamos disponibles de lunes a sábado.</p>
+      <ul>
+        <li>WhatsApp: <a href="https://wa.me/573000000000">+57 300 000 0000</a></li>
+        <li>Email: <a href="mailto:hola@tiendaaura.com">hola@tiendaaura.com</a></li>
+        <li>Instagram: <a href="https://instagram.com" target="_blank" rel="noreferrer">@tiendaaura</a></li>
+      </ul>
     </section>
   </main>
 
-  <!-- FOOTER (semántico) -->
   <footer class="site-footer">
-    <div class="container footer-wrap">
-      <p>© <span id="year"></span> Luna Beauty. Todos los derechos reservados.</p>
-      <nav class="nav" aria-label="Enlaces del pie">
-        <a href="#inicio">Inicio</a>
-        <a href="#productos">Productos</a>
-        <a href="#contacto">Contacto</a>
-      </nav>
-    </div>
+    <p>© 2026 Tienda Aura — Proyecto académico.</p>
   </footer>
-
-  <!-- CARRITO (IDs exactos para cart.js) -->
-  <div class="cart-overlay" id="cartOverlay" hidden></div>
-
-  <aside class="cart" id="cart" hidden aria-label="Carrito de compras">
-    <header class="cart-head">
-      <h2>Tu carrito</h2>
-      <button class="btn btn--ghost" type="button" id="closeCart">Cerrar ✕</button>
-    </header>
-
-    <div class="cart-body" id="cartItems"></div>
-
-    <footer class="cart-foot">
-      <div class="cart-total">
-        <span>Total</span>
-        <strong id="cartTotal">$0</strong>
-      </div>
-      <button class="btn" type="button" id="checkoutBtn">Finalizar compra</button>
-      <button class="btn btn--ghost" type="button" id="clearCart">Vaciar</button>
-      <p class="small">Checkout simulado para proyecto académico.</p>
-    </footer>
-  </aside>
-
-  <!-- SCRIPTS (ORDEN IMPORTA) -->
-  <script src="scripts/cart.js"></script>
-  <script src="scripts/filters.js"></script>
-  <script src="scripts/app.js"></script>
 </body>
 </html>
